@@ -24,16 +24,14 @@ class _ControlBottomState extends State<ControlBottom> {
   final List<Widget> pages = [
     Mainhome(),   // Separate screen for home content
     MainForm(),
-    MainAppointment(),
+    MainAppointment(leadIcon: false,),
     MainProfile(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.secondary,
-  
-    
+      backgroundColor: AppColors.secondary,  
       body: pages[_currentIndex], 
       bottomNavigationBar: BottomNavigation(
         onTap: (index) {
