@@ -16,9 +16,9 @@ class CustomTextfield extends StatelessWidget {
   final int?maxlines;
   final int?maxlength;
   final VoidCallback?sufonpressed;
-  final String?Function(String?)?validator;
   final TextInputType?keyboardtype;
   final AutovalidateMode?autovalidateMode;
+  
   const CustomTextfield({
       this.controller,
       this.width,
@@ -28,7 +28,6 @@ class CustomTextfield extends StatelessWidget {
       this.hintText,
       this.borderRadius,
       this.labelText,
-      this.validator,
       this.keyboardtype,
       this.autovalidateMode,
       this.hasBorder=true,
@@ -51,7 +50,14 @@ class CustomTextfield extends StatelessWidget {
             keyboardType: keyboardtype,
             controller: controller,
             maxLength: maxlength,
-            validator: validator,
+            validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Enter $hintText';
+                      } else {
+                        return null;
+                      }
+                    },
+                    // autovalidateMode: AutovalidateMode.onUserInteraction,
             decoration: InputDecoration(
                 suffixIcon: sufixIcon!=null?
            IconButton(onPressed: sufonpressed, icon:Icon( sufixIcon,color: AppColors.titile,))

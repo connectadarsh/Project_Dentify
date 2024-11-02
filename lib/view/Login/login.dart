@@ -45,27 +45,13 @@ class _LoginState extends State<Login> {
                 SizedBox(height: 30,),
                 CustomTextfield(
                   controller: usernameController,
-                  validator: (p0) {
-                    if(p0==null||p0.trim().isEmpty){
-                      return 'Enter username';
-                    }
-                    else{
-                      return null;
-                    }
-                  },
+
                 hintText: 'Username',
                 preffixIcon: Icons.mail),    
                 SizedBox(height:20 ,),
                 CustomTextfield(
                   controller: passwordController,
-                  validator: (p0) {
-                    if(p0==null||p0.trim().isEmpty){
-                      return 'Enter password';
-                    }
-                    else{
-                      return null;
-                    }
-                  },
+
                   hintText: 'Password',
                 preffixIcon: Icons.lock,
                 autovalidateMode: AutovalidateMode.onUserInteraction,

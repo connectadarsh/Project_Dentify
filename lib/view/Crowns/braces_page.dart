@@ -3,7 +3,6 @@
 import 'dart:io';
 
 import 'package:dentify/model/Braces_db/braces_db.dart';
-import 'package:dentify/view/Crowns/braces_floating.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -14,7 +13,6 @@ class BracesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: BracesFloating(),
     body: ValueListenableBuilder(
       valueListenable: Hive.box<BracesDb>('BracesBox').listenable(),
       builder:

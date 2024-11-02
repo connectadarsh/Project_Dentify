@@ -18,19 +18,20 @@ class ProfileDbAdapter extends TypeAdapter<ProfileDb> {
     };
     return ProfileDb(
       id: fields[0] as int?,
-      username: fields[1] as String,
-      qualification: fields[2] as String,
-      regestration: fields[3] as String,
+      username: fields[1] as String?,
+      qualification: fields[2] as String?,
+      regestration: fields[3] as String?,
       clinicname: fields[4] as String?,
       mobilenumber: fields[5] as String?,
       specialization: fields[6] as String?,
+      image: fields[7] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, ProfileDb obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class ProfileDbAdapter extends TypeAdapter<ProfileDb> {
       ..writeByte(5)
       ..write(obj.mobilenumber)
       ..writeByte(6)
-      ..write(obj.specialization);
+      ..write(obj.specialization)
+      ..writeByte(7)
+      ..write(obj.image);
   }
 
   @override

@@ -32,26 +32,14 @@ class _CompleteformState extends State<Completeform> {
         children: [
           CustomTextfield(
               controller: _yournameController,
-              validator: (p0) {
-                if (p0 == null || p0.trim().isEmpty) {
-                  return 'Enter username';
-                } else {
-                  return null;
-                }
-              },
+
               labelText: 'Your name',
               borderRadius: 10,
               hintText: 'Enter your name'),
           SizedBox(height: 25),
           CustomTextfield(
               controller: _qualificationController,
-              validator: (p0) {
-                if (p0 == null || p0.trim().isEmpty) {
-                  return 'Enter username';
-                } else {
-                  return null;
-                }
-              },
+
               labelText: 'Qualification',
               borderRadius: 10,
               hintText: 'Enter your qualification'),
@@ -63,13 +51,7 @@ class _CompleteformState extends State<Completeform> {
           SizedBox(height: 15),
           CustomTextfield(
               controller: _regestrationController,
-              validator: (p0) {
-                if (p0 == null || p0.trim().isEmpty) {
-                  return 'Enter username';
-                } else {
-                  return null;
-                }
-              },
+
               labelText: 'Registration',
               borderRadius: 10,
               hintText: 'Enter your registeration number'),
@@ -77,12 +59,16 @@ class _CompleteformState extends State<Completeform> {
           CustomTextfield(
               labelText: 'Mobile number',
               borderRadius: 10,
-              hintText: 'Enter your mobile number'),
+              hintText: 'Enter your mobile number',
+              controller: _mobilenumberController,
+              ),
           SizedBox(height: 15),
           CustomTextfield(
               labelText: 'Clinic name',
               borderRadius: 10,
-              hintText: 'Enter your clinic name'),
+              hintText: 'Enter your clinic name',
+              controller: _clinicnameController,
+              ),
           SizedBox(
             height: 20,
           ),
@@ -92,7 +78,10 @@ class _CompleteformState extends State<Completeform> {
                 _profileDetails.addProfileDetails(ProfileDb(
                     username: _yournameController.text,
                     qualification: _qualificationController.text,
-                    regestration: _regestrationController.text));
+                    regestration: _regestrationController.text,
+                    mobilenumber: _mobilenumberController.text,
+                    clinicname: _clinicnameController.text
+                    ));
 
                           const snackbar=SnackBar(content: Text('Successfully Signed in'),
                     duration: Duration(seconds: 2),

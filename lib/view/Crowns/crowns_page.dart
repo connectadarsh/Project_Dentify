@@ -4,8 +4,6 @@ import 'dart:io';
 
 import 'package:dentify/model/Braces_db/braces_db.dart';
 import 'package:dentify/model/crowns_db/crowns_db.dart';
-import 'package:dentify/view/Crowns/braces_floating.dart';
-import 'package:dentify/view/Crowns/crowns_floating.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -16,7 +14,6 @@ class CrownsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: CrownsFloating(),
     body: ValueListenableBuilder(
       valueListenable: Hive.box<CrownsDb>('CrownsBox').listenable(),
       builder:

@@ -59,13 +59,6 @@ class _MainAppointmentState extends State<MainAppointment> {
                   ),
                   CustomTextfield(
                     controller: nameController,
-                    validator: (p0) {
-                      if (p0 == null || p0.trim().isEmpty) {
-                        return 'Enter username';
-                      } else {
-                        return null;
-                      }
-                    },
                     borderRadius: 12,
                     hintText: 'Patient Name',
                   ),
@@ -81,13 +74,6 @@ class _MainAppointmentState extends State<MainAppointment> {
                     controller: mobileController,
                     keyboardtype: TextInputType.phone,
                     maxlength: 10,
-                    validator: (p0) {
-                      if (p0 == null || p0.trim().isEmpty) {
-                        return 'Enter mobile number';
-                      } else {
-                        return null;
-                      }
-                    },
                     borderRadius: 12,
                     hintText: 'Patient Name',
                   ),
@@ -101,13 +87,6 @@ class _MainAppointmentState extends State<MainAppointment> {
                   ),
                   CustomTextfield(
                     controller: cityController,
-                    validator: (p0) {
-                      if (p0 == null || p0.trim().isEmpty) {
-                        return 'Enter username';
-                      } else {
-                        return null;
-                      }
-                    },
                     borderRadius: 12,
                   ),
                   SizedBox(
@@ -122,13 +101,7 @@ class _MainAppointmentState extends State<MainAppointment> {
                         width: 160,
                         borderRadius: 12,
                         controller: dateController,
-                        validator: (p0) {
-                          if (p0 == null || p0.trim().isEmpty) {
-                            return 'Enter Date';
-                          } else {
-                            return null;
-                          }
-                        },
+
                         sufixIcon: Icons.calendar_month,
                         sufonpressed: () async {
                           final DateTime? date = await showDatePicker(
@@ -150,13 +123,6 @@ class _MainAppointmentState extends State<MainAppointment> {
                         hintText: 'Select Time',
                         readOnly: true,
                         controller: timeController,
-                        validator: (p0) {
-                          if (p0 == null || p0.trim().isEmpty) {
-                            return 'Enter Time';
-                          } else {
-                            return null;
-                          }
-                        },
                         sufixIcon: Icons.access_time_filled_sharp,
                         sufonpressed: () async {
                           final TimeOfDay? _time = await showTimePicker(
@@ -193,11 +159,10 @@ class _MainAppointmentState extends State<MainAppointment> {
                         cityController.clear();
                         dateController.clear();
                         timeController.clear();
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => const Listappointment(),
-                        //     ));
+                       if(widget.leadIcon)
+                       { 
+                        Navigator.pop(context);
+                       }
                       }
                     },
                     text: 'Add Appointment',

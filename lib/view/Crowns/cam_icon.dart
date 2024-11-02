@@ -4,20 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 
-class BracesFloating extends StatefulWidget {
-  const BracesFloating({super.key});
+class CamButtonIcon extends StatefulWidget {
+  const CamButtonIcon({super.key});
 
   @override
-  State<BracesFloating> createState() => _BracesFloatingState();
+  State<CamButtonIcon> createState() => _CamButtonIconState();
 }
 
-class _BracesFloatingState extends State<BracesFloating> {
-      final bracesDetails=Hive.box<BracesDb>('BracesBox');
+class _CamButtonIconState extends State<CamButtonIcon> {
+      // final bracesDetails=Hive.box<BracesDb>('BracesBox');
   String? image;
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-        child: Icon(Icons.add_a_photo),
+    return IconButton(
+        icon: Icon(Icons.add_a_photo),
         onPressed: () {
           showModalBottomSheet(
               context: context,
@@ -32,8 +32,8 @@ class _BracesFloatingState extends State<BracesFloating> {
                         children: [
                           IconButton(
                               onPressed: () {
-                                _imageFromCam();
-                                Navigator.pop(context);
+                               
+                              
                               },
                               icon: const Icon(
                                 Icons.camera,
@@ -46,8 +46,7 @@ class _BracesFloatingState extends State<BracesFloating> {
                         children: [
                           IconButton(
                               onPressed: () {
-                                _imageFromGal();
-                                Navigator.pop(context);
+                                
                               },
                               icon: const Icon(
                                 Icons.image,
@@ -70,7 +69,7 @@ class _BracesFloatingState extends State<BracesFloating> {
     if (fetchedImage == null) return;
     setState(() {
       image = fetchedImage.path;
-bracesDetails.add(BracesDb(image: image!));
+// bracesDetails.add(BracesDb(image: image!));
     });
   }
 
@@ -81,7 +80,7 @@ bracesDetails.add(BracesDb(image: image!));
     if (fetchedImage == null) return;
     setState(() {
       image = fetchedImage.path;
-      bracesDetails.add(BracesDb(image: image!));
+      // bracesDetails.add(BracesDb(image: image!));
     });
   }
 }

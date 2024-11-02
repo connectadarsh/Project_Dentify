@@ -44,13 +44,7 @@ class _SignupState extends State<Signup> {
                   ),
                   CustomTextfield(
                       controller: _usernameController,
-                      validator: (p0) {
-                        if (p0 == null || p0.trim().isEmpty) {
-                          return 'Enter username';
-                        } else {
-                          return null;
-                        }
-                      },
+
                       hintText: 'Enter your name',
                       preffixIcon: Icons.person),
                   SizedBox(
@@ -58,13 +52,7 @@ class _SignupState extends State<Signup> {
                   ),
                   CustomTextfield(
                     controller: _passwordController,
-                    validator: (p0) {
-                      if (p0 == null || p0.trim().isEmpty) {
-                        return 'Enter password';
-                      } else {
-                        return null;
-                      }
-                    },
+
                     hintText: 'Password',
                     preffixIcon: Icons.lock,
                   ),
@@ -73,15 +61,7 @@ class _SignupState extends State<Signup> {
                   ),
                   CustomTextfield(
                     controller: _confirmpasswordConroller,
-                    validator: (p0) {
-                      if (p0 == null || p0.trim().isEmpty) {
-                        return 'Enter password';
-                      } else if (p0 != _passwordController.text) {
-                        return 'password not matching';
-                      } else {
-                        return null;
-                      }
-                    },
+
                     hintText: 'Confirm Password',
                     preffixIcon: Icons.lock,
                   ),

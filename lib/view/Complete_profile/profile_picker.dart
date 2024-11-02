@@ -1,5 +1,6 @@
 import 'dart:io';
-
+import 'package:dentify/controller/profile_fn.dart';
+import 'package:dentify/model/add_account_db/add_account_db.dart';
 import 'package:dentify/utilities/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,6 +13,7 @@ class ProfilePicker extends StatefulWidget {
 }
 
 class _ProfilePickerState extends State<ProfilePicker> {
+    final ProfileDetails _profileDetails = ProfileDetails();
   String? image;
   @override
   Widget build(context) {
@@ -95,6 +97,7 @@ class _ProfilePickerState extends State<ProfilePicker> {
     if (fetchedImage == null) return;
     setState(() {
       image = fetchedImage.path;
+         _profileDetails.addProfileDetails(ProfileDb(image: image));
     });
   }
 
@@ -105,6 +108,7 @@ class _ProfilePickerState extends State<ProfilePicker> {
     if (fetchedImage == null) return;
     setState(() {
       image = fetchedImage.path;
+      _profileDetails.addProfileDetails(ProfileDb(image: image));
     });
   }
 }

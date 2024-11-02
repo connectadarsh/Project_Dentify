@@ -6,6 +6,7 @@ class ProfileDetails {
       final profileData=await Hive.box<ProfileDb>('profileBox');
       final _id=await profileData.add(value);
       value.id=_id;
+   
   }
 
   

@@ -12,6 +12,7 @@ class AppointmentDetails {
 Future<void>deleteAppointmnet(int index)async{
 final deleteData=await Hive.box<AppointmentDb>('AppointmentBox');
 await deleteData.deleteAt(index);
+
 }
   
 }
