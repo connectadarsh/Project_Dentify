@@ -16,11 +16,13 @@ class CustomTextfield extends StatelessWidget {
   final int?maxlines;
   final int?maxlength;
   final VoidCallback?sufonpressed;
+   final VoidCallback?onchange;
   final TextInputType?keyboardtype;
   final AutovalidateMode?autovalidateMode;
   
   const CustomTextfield({
       this.controller,
+      this.onchange,
       this.width,
       this.height,
       this.preffixIcon,

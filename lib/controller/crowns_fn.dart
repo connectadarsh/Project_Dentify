@@ -6,8 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 class CrownsDetails {
   Future<void>addCrownsDetails(CrownsDb value)async{
       final CrownsData=await Hive.box<CrownsDb>('CrownsBox');
-      final _id=await CrownsData.add(value);
-      value.id=_id;
+      await CrownsData.add(value);
   }
 
   

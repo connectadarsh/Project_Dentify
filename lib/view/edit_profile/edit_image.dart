@@ -3,15 +3,15 @@ import 'package:dentify/utilities/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ProfilePicker extends StatefulWidget {
+class EditProfileImage extends StatefulWidget {
 
 final Function(String?)? onImageSelected;
-  const ProfilePicker({super.key,required this.onImageSelected});
+  const EditProfileImage({super.key,required this.onImageSelected});
   @override
-  State<ProfilePicker> createState() => _ProfilePickerState();
+  State<EditProfileImage> createState() => _EditProfileImageState();
 }
 
-class _ProfilePickerState extends State<ProfilePicker> {
+class _EditProfileImageState extends State<EditProfileImage> {
 
    
   String? image;

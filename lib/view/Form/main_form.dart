@@ -87,6 +87,7 @@ class _MainFormState extends State<MainForm> {
                             style: TextStyle(color: AppColors.secondary),
                           ),
                           CustomTextfield(
+                            keyboardtype: TextInputType.number,
                             controller: _age,
                             hintText: 'Age',
                           ),

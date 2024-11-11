@@ -75,7 +75,7 @@ class _MainAppointmentState extends State<MainAppointment> {
                     keyboardtype: TextInputType.phone,
                     maxlength: 10,
                     borderRadius: 12,
-                    hintText: 'Patient Name',
+                    hintText: 'Mobile Number',
                   ),
                   SizedBox(
                     height: 20,

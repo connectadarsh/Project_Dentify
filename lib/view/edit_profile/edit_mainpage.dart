@@ -4,16 +4,18 @@ import 'package:dentify/utilities/colors/colors.dart';
 import 'package:dentify/utilities/custom_widgets/button.dart';
 import 'package:dentify/view/Complete_profile/formComplete.dart';
 import 'package:dentify/view/Complete_profile/profile_picker.dart';
+import 'package:dentify/view/edit_profile/edit_form.dart';
+import 'package:dentify/view/edit_profile/edit_image.dart';
 import 'package:flutter/material.dart';
 
-class CompleteProfile extends StatefulWidget {
-  const CompleteProfile({super.key});
+class EditProfile extends StatefulWidget {
+  const EditProfile({super.key});
 
   @override
-  State<CompleteProfile> createState() => _CompleteProfileState();
+  State<EditProfile> createState() => _EditProfileState();
 }
 
-class _CompleteProfileState extends State<CompleteProfile> {
+class _EditProfileState extends State<EditProfile> {
   
   final formKey=GlobalKey<FormState>();
  String?selectedImagePath;
@@ -42,13 +44,13 @@ class _CompleteProfileState extends State<CompleteProfile> {
               ),
               ),
               SizedBox(height: 40),
-             ProfilePicker(onImageSelected: (imagePath) {
+             EditProfileImage(onImageSelected: (imagePath) {
               setState(() {
                 selectedImagePath=imagePath;
               });
              },),
              SizedBox(height: 40),
-             Completeform(selectedImage: selectedImagePath,),
+             EditForm(selectedImage: selectedImagePath,),
              SizedBox(height: 20,),
             
             ],),

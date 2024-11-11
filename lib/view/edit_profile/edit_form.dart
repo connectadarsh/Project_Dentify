@@ -1,3 +1,4 @@
+
 import 'package:dentify/controller/profile_fn.dart';
 import 'package:dentify/model/add_account_db/add_account_db.dart';
 import 'package:dentify/utilities/custom_widgets/Text_field.dart';
@@ -5,15 +6,15 @@ import 'package:dentify/utilities/custom_widgets/button.dart';
 import 'package:dentify/view/Homepage/ControlBottom.dart';
 import 'package:flutter/material.dart';
 
-class Completeform extends StatefulWidget {
+class EditForm extends StatefulWidget {
  final String? selectedImage;
-   const Completeform({super.key,required this.selectedImage});
+   const EditForm({super.key,required this.selectedImage});
 
   @override
-  State<Completeform> createState() => _CompleteformState();
+  State<EditForm> createState() => _EditFormState();
 }
 
-class _CompleteformState extends State<Completeform> {
+class _EditFormState extends State<EditForm> {
   final ProfileDetails _profileDetails = ProfileDetails();
   final TextEditingController _yournameController = TextEditingController();
   final TextEditingController _qualificationController =

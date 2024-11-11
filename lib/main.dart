@@ -40,6 +40,7 @@ void main()async{
   Hive.openBox<CrownsDb>('CrownsBox');
   Hive.openBox<AppointmentDb>('AppointmentBox');
   Hive.openBox<FormDb>('FormBox');
+  
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
