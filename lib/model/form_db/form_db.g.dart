@@ -28,13 +28,16 @@ class FormDbAdapter extends TypeAdapter<FormDb> {
       tobacco: fields[8] as String,
       oral: fields[9] as String,
       chief: fields[10] as String,
+      mobile: fields[11] as String,
+      date: fields[12] as String,
+      time: fields[13] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, FormDb obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(14)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -56,7 +59,13 @@ class FormDbAdapter extends TypeAdapter<FormDb> {
       ..writeByte(9)
       ..write(obj.oral)
       ..writeByte(10)
-      ..write(obj.chief);
+      ..write(obj.chief)
+      ..writeByte(11)
+      ..write(obj.mobile)
+      ..writeByte(12)
+      ..write(obj.date)
+      ..writeByte(13)
+      ..write(obj.time);
   }
 
   @override

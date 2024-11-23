@@ -5,6 +5,7 @@ import 'package:dentify/utilities/custom_widgets/Text_field.dart';
 import 'package:dentify/utilities/custom_widgets/button.dart';
 import 'package:dentify/utilities/custom_widgets/drop.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EditCaseHistory extends StatefulWidget {
   final FormDb data;
@@ -33,10 +34,16 @@ class _EditCaseHistoryState extends State<EditCaseHistory> {
   TextEditingController _oral = TextEditingController();
 
   TextEditingController _chief = TextEditingController();
+  TextEditingController _mobile = TextEditingController();
+  TextEditingController _dateController = TextEditingController();
+  TextEditingController _timeController = TextEditingController();
 
   @override
   void initState() {
     _name.text = widget.data.name;
+    _dateController.text=widget.data.date;
+    _timeController.text=widget.data.time;
+    _mobile.text = widget.data.mobile;
     _age.text = widget.data.age;
     _address.text = widget.data.address;
     _medicalHistory.text = widget.data.medicalHistory;
@@ -120,6 +127,19 @@ class _EditCaseHistoryState extends State<EditCaseHistory> {
                             controller: _age,
                             hintText: 'Age',
                             readOnly: readOnly,
+                          ),
+                          const SizedBox(
+                            height: 3,
+                          ),
+                          const Text(
+                            '    Mobile',
+                            style: TextStyle(color: AppColors.secondary),
+                          ),
+                          CustomTextfield(
+                            controller: _mobile,
+                            hintText: 'Mobile',
+                            readOnly: readOnly,
+                            maxlength: 10,
                           ),
                           const SizedBox(
                             height: 14,
@@ -301,6 +321,50 @@ class _EditCaseHistoryState extends State<EditCaseHistory> {
                   const SizedBox(
                     height: 30,
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomTextfield(
+                        readOnly: true,
+                        hintText: 'Select Date',
+                        width: 160,
+                        borderRadius: 12,
+                        controller: _dateController,
+                        sufixIcon: Icons.calendar_month,
+                        sufonpressed: () async {
+                          final DateTime? date = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime.now(),
+                              lastDate: DateTime(2050));
+                          if (date != null) {
+                            setState(() {
+                              _dateController.text =
+                                  DateFormat('dd/MM/yyyy').format(date);
+                            });
+                          }
+                        },
+                      ),
+                      CustomTextfield(
+                        width: 160,
+                        borderRadius: 12,
+                        hintText: 'Select Time',
+                        readOnly: true,
+                        controller: _timeController,
+                        sufixIcon: Icons.access_time_filled_sharp,
+                        sufonpressed: () async {
+                          final TimeOfDay? time = await showTimePicker(
+                              context: context, initialTime: TimeOfDay.now());
+                          setState(() {
+                            _timeController.text = time!.format(context);
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   (readOnly == true)
                       ? Container()
                       : CoustomButton(
@@ -308,20 +372,25 @@ class _EditCaseHistoryState extends State<EditCaseHistory> {
                           borderRadius: 12,
                           onTap: () {
                             if (_formKey.currentState!.validate()) {
-                              _formDetails.updateFormDetails(
-                                  widget.index,
-                                  FormDb(
-                                      name: _name.text,
-                                      age: _age.text,
-                                      gender: gender ?? widget.data.gender,
-                                      address: _address.text,
-                                      medicalHistory: _medicalHistory.text,
-                                      dentalHistory: _dentalHistory.text,
-                                      diet: _diet.text,
-                                      tobacco: _tobacco.text,
-                                      oral: _oral.text,
-                                      chief: _chief.text,
-                                      ));
+                              final updatedata = _formDetails.updateFormDetails(
+                                widget.index,
+                                FormDb(
+                                  date: _dateController.text,
+                                  time: _timeController.text,
+                                  mobile: _mobile.text,
+                                  name: _name.text,
+                                  age: _age.text,
+                                  gender: gender ?? widget.data.gender,
+                                  address: _address.text,
+                                  medicalHistory: _medicalHistory.text,
+                                  dentalHistory: _dentalHistory.text,
+                                  diet: _diet.text,
+                                  tobacco: _tobacco.text,
+                                  oral: _oral.text,
+                                  chief: _chief.text,
+                                  
+                                ),
+                              );
                               const snackbar = SnackBar(
                                 content: Text('Saved changes'),
                                 duration: Duration(seconds: 5),
@@ -329,7 +398,7 @@ class _EditCaseHistoryState extends State<EditCaseHistory> {
                               );
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackbar);
-                              Navigator.pop(context);
+                              Navigator.pop(context, updatedata);
                             }
                           },
                           text: 'Submit',

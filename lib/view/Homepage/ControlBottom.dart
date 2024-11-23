@@ -1,6 +1,6 @@
 
 import 'package:dentify/utilities/colors/colors.dart';
-import 'package:dentify/view/Appointment/mainAppointment.dart';
+import 'package:dentify/view/Appointment/mainappointment.dart';
 import 'package:dentify/view/Form/main_form.dart';
 import 'package:dentify/view/Homepage/BottomNavigation.dart';
 import 'package:dentify/view/Homepage/carousal.dart';
@@ -22,10 +22,10 @@ class _ControlBottomState extends State<ControlBottom> {
 
   // List of pages to display
   final List<Widget> pages = [
-    Mainhome(),   // Separate screen for home content
-    MainForm(),
-    MainAppointment(leadIcon: false,),
-    ProifleAvatar(),
+    const Mainhome(),   // Separate screen for home content
+    const MainForm(leadIcon: false),
+    const MainAppointment(leadIcon: false,),
+    const ProifleAvatar(),
   ];
 
   @override

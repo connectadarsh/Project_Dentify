@@ -3,9 +3,7 @@ import 'package:dentify/model/Appointment_db/appointment_db.dart';
 import 'package:dentify/utilities/colors/colors.dart';
 import 'package:dentify/utilities/custom_widgets/Text_field.dart';
 import 'package:dentify/utilities/custom_widgets/button.dart';
-import 'package:dentify/view/ListAppointment/listappointment.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 
 class MainAppointment extends StatefulWidget {
@@ -37,9 +35,11 @@ class _MainAppointmentState extends State<MainAppointment> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back_ios))
+                  icon: const Icon(Icons.arrow_back_ios),
+                  
+                  )
               : Container(),
-          title: Text(
+          title: const Text(
             'Appointments',
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
           ),
@@ -52,7 +52,7 @@ class _MainAppointmentState extends State<MainAppointment> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     '    Patient Name',
                     style: TextStyle(
                         color: AppColors.titile, fontWeight: FontWeight.w600),
@@ -62,10 +62,10 @@ class _MainAppointmentState extends State<MainAppointment> {
                     borderRadius: 12,
                     hintText: 'Patient Name',
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text(
+                  const Text(
                     '    Mobile Number',
                     style: TextStyle(
                         color: AppColors.titile, fontWeight: FontWeight.w600),
@@ -77,19 +77,19 @@ class _MainAppointmentState extends State<MainAppointment> {
                     borderRadius: 12,
                     hintText: 'Mobile Number',
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text(
+                  const Text(
                     '    City/Place',
-                    style: TextStyle(
+                    style:  TextStyle(
                         color: AppColors.titile, fontWeight: FontWeight.w600),
                   ),
                   CustomTextfield(
                     controller: cityController,
                     borderRadius: 12,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -134,7 +134,7 @@ class _MainAppointmentState extends State<MainAppointment> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 90,
                   ),
                   CoustomButton(

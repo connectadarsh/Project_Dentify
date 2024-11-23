@@ -4,12 +4,10 @@ import 'package:dentify/utilities/colors/colors.dart';
 import 'package:dentify/utilities/custom_widgets/Text_field.dart';
 import 'package:dentify/utilities/custom_widgets/button.dart';
 import 'package:dentify/utilities/custom_widgets/drop.dart';
-import 'package:dentify/view/Complete_profile/profile_picker.dart';
-import 'package:dentify/view/Crowns/cam_icon.dart';
+import 'package:dentify/view/complete_profile/profile_picker.dart';
+import 'package:dentify/view/Crowns/image_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SelectionForm extends StatefulWidget {
@@ -59,24 +57,27 @@ class _SelectionFormState extends State<SelectionForm> {
               const SizedBox(
                 height: 15,
               ),
-              Center(
-                child: DottedBorder(
-                  dashPattern: const [6, 6],
-                  child: Container(
-                    height: 250,
-                    width: 300,
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 194, 234, 230),
-                    ),
-                    //
-                    child: ProfilePicker(
-                      onImageSelected: (path) {
-                        imagePath = path;
-                      },
-                    ),
-                  ),
-                ),
-              ),
+              // Center(
+              //   child: DottedBorder(
+              //     dashPattern: const [6, 6],
+              //     child: Container(
+              //       height: 250,
+              //       width: 300,
+              //       decoration: const BoxDecoration(
+              //         color: Color.fromARGB(255, 194, 234, 230),
+              //       ),
+              //       //
+              //       child: ProfilePicker(
+              //         onImageSelected: (path) {
+              //           imagePath = path;
+              //         },
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              CrownImagePicker(onImageSelected: (path) {
+                imagePath=path;
+              },),
               const SizedBox(
                 height: 15,
               ),
@@ -110,6 +111,7 @@ class _SelectionFormState extends State<SelectionForm> {
                 height: 12,
               ),
               CustomTextfield(
+                keyboardtype: TextInputType.numberWithOptions(),
                 controller: priceController,
                 preffixIcon: FontAwesomeIcons.indianRupeeSign,
                 width: 105,
@@ -142,6 +144,13 @@ class _SelectionFormState extends State<SelectionForm> {
                         category: types!,
                         price: priceController.text,
                         material: materialController.text));
+                         const snackbar = SnackBar(
+                          content: Text('Image Uploaded'),
+                          duration: Duration(seconds: 5),
+                          backgroundColor: Colors.green,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                        Navigator.pop(context);
                   },
                   text: 'Upload Image')
             ],

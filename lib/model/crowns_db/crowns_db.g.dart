@@ -17,24 +17,27 @@ class CrownsDbAdapter extends TypeAdapter<CrownsDb> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CrownsDb(
-      image: fields[0] as String,
-      category: fields[1] as String,
-      price: fields[2] as String,
-      material: fields[3] as String?,
+      id: fields[0] as int?,
+      image: fields[1] as String,
+      category: fields[2] as String,
+      price: fields[3] as String,
+      material: fields[4] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, CrownsDb obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.image)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.category)
+      ..write(obj.image)
       ..writeByte(2)
-      ..write(obj.price)
+      ..write(obj.category)
       ..writeByte(3)
+      ..write(obj.price)
+      ..writeByte(4)
       ..write(obj.material);
   }
 

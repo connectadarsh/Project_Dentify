@@ -1,31 +1,39 @@
 import 'package:hive/hive.dart';
 part 'add_account_db.g.dart';
-@HiveType(typeId:1)
-class ProfileDb extends HiveObject{
 
+@HiveType(typeId: 1)
+class ProfileDb extends HiveObject {
   @HiveField(0)
-  int ?id;
+  int? id;
 
   @HiveField(1)
   String? username;
 
   @HiveField(2)
-  String?qualification;
+  String? qualification;
 
   @HiveField(3)
-  String ?regestration;
-  
-   @HiveField(4)
-  String?clinicname;
+  String? regestration;
 
-   @HiveField(5)
-  String?mobilenumber;
+  @HiveField(4)
+  String? clinicname;
 
-   @HiveField(6)
-  String?specialization;
+  @HiveField(5)
+  String? mobilenumber;
 
-   @HiveField(7)
+  @HiveField(6)
+  String? specialization;
+
+  @HiveField(7)
   String? image;
 
-  ProfileDb({this.id, this.username, this.qualification, this.regestration,this.clinicname,this.mobilenumber,this.specialization,this.image});
+  ProfileDb(
+      {this.id,
+      this.username,
+      this.qualification,
+      this.regestration,
+      this.clinicname,
+      this.mobilenumber,
+      this.specialization,
+      this.image});
 }

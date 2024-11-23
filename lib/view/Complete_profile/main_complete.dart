@@ -2,8 +2,8 @@ import 'package:dentify/controller/profile_fn.dart';
 import 'package:dentify/model/add_account_db/add_account_db.dart';
 import 'package:dentify/utilities/colors/colors.dart';
 import 'package:dentify/utilities/custom_widgets/button.dart';
-import 'package:dentify/view/Complete_profile/formComplete.dart';
-import 'package:dentify/view/Complete_profile/profile_picker.dart';
+import 'package:dentify/view/complete_profile/formComplete.dart';
+import 'package:dentify/view/complete_profile/profile_picker.dart';
 import 'package:flutter/material.dart';
 
 class CompleteProfile extends StatefulWidget {

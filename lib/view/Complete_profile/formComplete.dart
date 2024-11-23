@@ -82,15 +82,18 @@ class _CompleteformState extends State<Completeform> {
           ),
           CoustomButton(
             onTap: () async {
-              if (formKey.currentState!.validate()) {
+              if ((formKey.currentState!.validate())&&(widget.selectedImage!=null&&widget.selectedImage!.isNotEmpty)) {
+                
                 _profileDetails.addProfileDetails(ProfileDb(
                     username: _yournameController.text,
                     qualification: _qualificationController.text,
                     regestration: _regestrationController.text,
                     mobilenumber: _mobilenumberController.text,
+                    specialization: _specializationController.text,
                     clinicname: _clinicnameController.text,
                     image: widget.selectedImage
                     ));
+
 
                           const snackbar=SnackBar(content: Text('Successfully Signed in'),
                     duration: Duration(seconds: 2),
@@ -101,6 +104,13 @@ class _CompleteformState extends State<Completeform> {
                   builder: (context) => const ControlBottom(),)
                 
                 );
+              }else{
+               const snackbar = SnackBar(
+                          content: Text('Add all required fields'),
+                          duration: Duration(seconds: 5),
+                          backgroundColor: Colors.green,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
               }
             },
             text: 'Submit',

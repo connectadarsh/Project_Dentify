@@ -1,9 +1,6 @@
-
-
 import 'dart:io';
-
-import 'package:dentify/model/Braces_db/braces_db.dart';
 import 'package:dentify/model/crowns_db/crowns_db.dart';
+import 'package:dentify/view/Crowns/detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -14,12 +11,16 @@ class CrownsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    body: ValueListenableBuilder(
+        body: ValueListenableBuilder(
       valueListenable: Hive.box<CrownsDb>('CrownsBox').listenable(),
-      builder:
-          (BuildContext ctx, Box<CrownsDb> box, Widget? child) {
-              if(box.isEmpty){
-          return const Center(child: Text('Add Your Models'),);
+      builder: (BuildContext ctx, Box<CrownsDb> box, Widget? child) {
+        List<CrownsDb> datas = box.values.where((braces) {
+          return braces.category.contains('crowns');
+        }).toList();
+        if (box.isEmpty) {
+          return const Center(
+            child: Text('Add Your Models'),
+          );
         }
         return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -28,22 +29,37 @@ class CrownsPage extends StatelessWidget {
               mainAxisSpacing: 10,
               childAspectRatio: 1,
             ),
-            itemCount: box.length,
+            itemCount: datas.length,
             itemBuilder: (context, index) {
-              final crownsData = box.getAt(index);
+              final crownsData = datas[index];
               return InkWell(
-                onTap: (){
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                   return DetailPage(data: datas[index],index: index,);
+                  },));
                 },
-                child:Card(
-                  child: Image(
-                    image: FileImage(File(crownsData!.image)), 
-                    fit: BoxFit.cover, 
+                onLongPress: (){
+
+                },
+                child: Card(
+
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: Image(
+                          image: FileImage(File(crownsData.image)),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Text('₹${crownsData.price}')
+                    ],
                   ),
                 ),
               );
             });
       },
-    )
-    );
+    ));
   }
 }

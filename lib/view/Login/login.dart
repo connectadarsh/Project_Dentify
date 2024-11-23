@@ -2,7 +2,7 @@ import 'package:dentify/controller/login_fn.dart';
 import 'package:dentify/utilities/colors/colors.dart';
 import 'package:dentify/utilities/custom_widgets/Text_field.dart';
 import 'package:dentify/utilities/custom_widgets/button.dart';
-import 'package:dentify/view/Complete_profile/main_complete.dart';
+import 'package:dentify/view/complete_profile/main_complete.dart';
 import 'package:dentify/view/Homepage/ControlBottom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

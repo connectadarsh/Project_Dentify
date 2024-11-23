@@ -11,4 +11,13 @@ class ProfileDetails {
     final sharedPrefs = await SharedPreferences.getInstance();
     await sharedPrefs.setBool(saveKeyProfile, true);
   }
+
+
+
+
+   Future<void> UpdateProfileDetails(ProfileDb value) async {
+    final profileData = await Hive.box<ProfileDb>('profileBox');
+    await profileData.putAt(value.id!, value);
+  }
+
 }

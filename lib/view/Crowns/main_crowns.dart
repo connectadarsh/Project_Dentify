@@ -14,14 +14,9 @@ class Maincrowns extends StatelessWidget {
       initialIndex: 1,
       length: 2,
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => SelectionForm(),));
-        },),
         backgroundColor: AppColors.secondary,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70),
+          preferredSize: Size.fromHeight(80),
           child: AppBar(
             bottom: TabBar(tabs: [
             Tab(
@@ -40,6 +35,12 @@ class Maincrowns extends StatelessWidget {
            CrownsPage(),
           ],
         ),
+         floatingActionButton: FloatingActionButton(
+      backgroundColor: AppColors.primary,
+          child: Icon(Icons.add,color: AppColors.secondary,),
+          onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SelectionForm(),));
+        },),
       ),
     );
    

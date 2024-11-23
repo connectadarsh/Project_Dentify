@@ -116,7 +116,7 @@ class _ProifleAvatarState extends State<ProifleAvatar> {
               ontap: (){
                 Navigator.of(context).push(
                   MaterialPageRoute(builder:(context) => 
-                  DeleteAccount(),));},
+                  SettingsPage(),));},
             ),
 
             const ProfileItems(

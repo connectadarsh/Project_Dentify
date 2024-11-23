@@ -31,7 +31,7 @@ class SimpleDropdown extends StatelessWidget {
       items: list,
       initialItem: initialItem,
       onChanged: (value) {
-        log('changing value to: $value');
+        
         dropResult(value!);
         
       },

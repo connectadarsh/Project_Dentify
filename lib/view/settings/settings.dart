@@ -1,20 +1,21 @@
+import 'package:dentify/controller/delete_box.dart';
 import 'package:dentify/utilities/colors/colors.dart';
 import 'package:dentify/utilities/custom_widgets/alert_box.dart';
-import 'package:dentify/view/Login/login.dart';
-import 'package:dentify/view/edit_profile/edit_form.dart';
-import 'package:dentify/view/edit_profile/edit_mainpage.dart';
+import 'package:dentify/view/edit_profile/edit_pofilepage.dart';
 import 'package:dentify/view/profile/profile_items.dart';
+import 'package:dentify/view/selection/selection.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DeleteAccount extends StatefulWidget {
-  const DeleteAccount({super.key});
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
 
   @override
-  State<DeleteAccount> createState() => _DeleteAccountState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _DeleteAccountState extends State<DeleteAccount> {
+class _SettingsPageState extends State<SettingsPage> {
+  final DeleteBox deleteBox=DeleteBox();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,9 +44,10 @@ class _DeleteAccountState extends State<DeleteAccount> {
                     onPressed: () async {
                       final sharedPrefs = await SharedPreferences.getInstance();
                       await sharedPrefs.clear();
+                      await deleteBox.deleteAll();
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => Login()),
+                        MaterialPageRoute(builder: (context) => Selection()),
                         (Route<dynamic> route) => false,
                       );
                     },

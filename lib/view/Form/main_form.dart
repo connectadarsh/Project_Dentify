@@ -5,34 +5,40 @@ import 'package:dentify/utilities/custom_widgets/Text_field.dart';
 import 'package:dentify/utilities/custom_widgets/button.dart';
 import 'package:dentify/utilities/custom_widgets/drop.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MainForm extends StatefulWidget {
-  MainForm({super.key});
+  final bool leadIcon;
+  const MainForm({super.key, required this.leadIcon});
 
-  @override
+  @override 
   State<MainForm> createState() => _MainFormState();
 }
 
 class _MainFormState extends State<MainForm> {
   final List<String> items = ['Male', 'Female', 'Others'];
 
-  TextEditingController _name = TextEditingController();
+  final TextEditingController _name = TextEditingController();
 
-  TextEditingController _age = TextEditingController();
+  final TextEditingController _age = TextEditingController();
+  final TextEditingController _mobile = TextEditingController();
 
-  TextEditingController _address = TextEditingController();
+  final TextEditingController _address = TextEditingController();
 
-  TextEditingController _medicalHistory = TextEditingController();
+  final TextEditingController _medicalHistory = TextEditingController();
 
-  TextEditingController _dentalHistory = TextEditingController();
+  final TextEditingController _dentalHistory = TextEditingController();
 
-  TextEditingController _diet = TextEditingController();
+  final TextEditingController _diet = TextEditingController();
 
-  TextEditingController _tobacco = TextEditingController();
+  final TextEditingController _tobacco = TextEditingController();
 
-  TextEditingController _oral = TextEditingController();
+  final TextEditingController _oral = TextEditingController();
 
-  TextEditingController _chief = TextEditingController();
+  final TextEditingController _chief = TextEditingController();
+
+  final TextEditingController _dateController = TextEditingController();
+  final TextEditingController _timeController = TextEditingController();
 
   String? gender;
 
@@ -41,10 +47,27 @@ class _MainFormState extends State<MainForm> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Form(
-        key: _formKey,
+    return Form(
+      key: _formKey,
+      child: SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            title: const Text(
+              'Form',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            centerTitle: true,
+            toolbarHeight: 30,
+            backgroundColor: AppColors.secondary,
+            leading: (widget.leadIcon)
+                ? IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.arrow_back_ios),
+                  )
+                : Container(),
+          ),
           backgroundColor: AppColors.secondary,
           body: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -52,14 +75,14 @@ class _MainFormState extends State<MainForm> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text(
+                  const Text(
                     'Personal Details',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -71,7 +94,7 @@ class _MainFormState extends State<MainForm> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             '    Name',
                             style: TextStyle(color: AppColors.secondary),
                           ),
@@ -79,10 +102,10 @@ class _MainFormState extends State<MainForm> {
                             controller: _name,
                             hintText: 'Name',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 3,
                           ),
-                          Text(
+                          const Text(
                             '    Age',
                             style: TextStyle(color: AppColors.secondary),
                           ),
@@ -91,7 +114,7 @@ class _MainFormState extends State<MainForm> {
                             controller: _age,
                             hintText: 'Age',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 14,
                           ),
                           SimpleDropdown(
@@ -103,12 +126,25 @@ class _MainFormState extends State<MainForm> {
                               });
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
+                            height: 14,
+                          ),
+                          const Text(
+                            '  Mobile Number',
+                            style: TextStyle(color: AppColors.secondary),
+                          ),
+                          CustomTextfield(
+                            keyboardtype: TextInputType.number,
+                            controller: _mobile,
+                            maxlength: 10,
+                            hintText: 'Mobile Number',
+                          ),
+                          const SizedBox(
                             height: 20,
                           ),
                           Container(
                               height: 150,
-                              padding: EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(
                                   color: AppColors.secondary,
                                   borderRadius: BorderRadius.circular(20)),
@@ -121,25 +157,25 @@ class _MainFormState extends State<MainForm> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
-                  Text(
+                  const Text(
                     'Medical History & Drug Allergy',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
                         color: AppColors.primary,
                         borderRadius: BorderRadius.circular(20)),
                     child: Container(
                         height: 150,
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
                             color: AppColors.secondary,
                             borderRadius: BorderRadius.circular(20)),
@@ -149,25 +185,25 @@ class _MainFormState extends State<MainForm> {
                           hintText: 'Enter your findings',
                         )),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
-                  Text(
+                  const Text(
                     'Past Dental History',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
                         color: AppColors.primary,
                         borderRadius: BorderRadius.circular(20)),
                     child: Container(
                         height: 150,
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
                             color: AppColors.secondary,
                             borderRadius: BorderRadius.circular(20)),
@@ -177,14 +213,14 @@ class _MainFormState extends State<MainForm> {
                           hintText: 'Enter your findings',
                         )),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
-                  Text(
+                  const Text(
                     'Personal Habits',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Container(
@@ -198,7 +234,7 @@ class _MainFormState extends State<MainForm> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             '    Diet',
                             style: TextStyle(color: AppColors.secondary),
                           ),
@@ -206,10 +242,10 @@ class _MainFormState extends State<MainForm> {
                             controller: _diet,
                             hintText: 'Enter your finding',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 12,
                           ),
-                          Text(
+                          const Text(
                             '    Tobacco Related',
                             style: TextStyle(color: AppColors.secondary),
                           ),
@@ -217,10 +253,10 @@ class _MainFormState extends State<MainForm> {
                             controller: _tobacco,
                             hintText: 'Enter your finding',
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 12,
                           ),
-                          Text(
+                          const Text(
                             '    Oral Hygiene',
                             style: TextStyle(color: AppColors.secondary),
                           ),
@@ -232,25 +268,25 @@ class _MainFormState extends State<MainForm> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
-                  Text(
+                  const Text(
                     'Chief Findings',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
                         color: AppColors.primary,
                         borderRadius: BorderRadius.circular(20)),
                     child: Container(
                         height: 200,
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
                             color: AppColors.secondary,
                             borderRadius: BorderRadius.circular(20)),
@@ -260,8 +296,52 @@ class _MainFormState extends State<MainForm> {
                           hintText: 'Enter your findings',
                         )),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomTextfield(
+                        readOnly: true,
+                        hintText: 'Select Date',
+                        width: 160,
+                        borderRadius: 12,
+                        controller: _dateController,
+                        sufixIcon: Icons.calendar_month,
+                        sufonpressed: () async {
+                          final DateTime? date = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime.now(),
+                              lastDate: DateTime(2050));
+                          if (date != null) {
+                            setState(() {
+                              _dateController.text =
+                                  DateFormat('dd/MM/yyyy').format(date);
+                            });
+                          }
+                        },
+                      ),
+                      CustomTextfield(
+                        width: 160,
+                        borderRadius: 12,
+                        hintText: 'Select Time',
+                        readOnly: true,
+                        controller: _timeController,
+                        sufixIcon: Icons.access_time_filled_sharp,
+                        sufonpressed: () async {
+                          final TimeOfDay? _time = await showTimePicker(
+                              context: context, initialTime: TimeOfDay.now());
+                          setState(() {
+                            _timeController.text = _time!.format(context);
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   CoustomButton(
                     width: 400,
@@ -269,25 +349,41 @@ class _MainFormState extends State<MainForm> {
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
                         _formDetails.addFormDetails(FormDb(
-                            name:_name.text,
-                            age:_age.text,
-                            gender:gender!,
-                            address:_address.text,
-                            medicalHistory:_medicalHistory.text,
-                            dentalHistory:_dentalHistory.text,
-                            diet:_diet.text,
-                            tobacco:_tobacco.text,
-                            oral:_oral.text,
-                            chief:_chief.text));
-                             const snackbar = SnackBar(
+                          name: _name.text,
+                          age: _age.text,
+                          date: _dateController.text,
+                          time: _timeController.text,
+                          mobile: _mobile.text,
+                          gender: gender!,
+                          address: _address.text,
+                          medicalHistory: _medicalHistory.text,
+                          dentalHistory: _dentalHistory.text,
+                          diet: _diet.text,
+                          tobacco: _tobacco.text,
+                          oral: _oral.text,
+                          chief: _chief.text,
+                        ));
+                        const snackbar = SnackBar(
                           content: Text('Added to appointments'),
                           duration: Duration(seconds: 5),
                           backgroundColor: Colors.green,
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                        // _name.clear();
-                        // _age.clear();
-                        
+                        _name.clear();
+                        _age.clear();
+                        _dateController.clear();
+                        _timeController.clear();
+                        _mobile.clear();
+                        _address.clear();
+                        _medicalHistory.clear();
+                        _dentalHistory.clear();
+                        _diet.clear();
+                        _tobacco.clear();
+                        _oral.clear();
+                        _chief.clear();
+                        if (widget.leadIcon) {
+                          Navigator.pop(context);
+                        }
                       }
                     },
                     text: 'Submit',
