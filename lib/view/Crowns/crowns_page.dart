@@ -53,7 +53,13 @@ class CrownsPage extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      Text('₹${crownsData.price}')
+                       const SizedBox(height: 10),
+                      Text('₹${crownsData.price}',
+                      style: TextStyle(
+                        fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                      ),),
+                      
                     ],
                   ),
                 ),
@@ -63,3 +69,5 @@ class CrownsPage extends StatelessWidget {
     ));
   }
 }
+
+

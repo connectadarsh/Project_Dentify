@@ -32,7 +32,7 @@ class _MainhomeState extends State<Mainhome> {
             backgroundColor: AppColors.secondary,
             automaticallyImplyLeading: false,
             title: Text(
-              data.last.username!,
+              ' Hey!!  Dr.${data.last.username!}',
               style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 20,

@@ -1,9 +1,14 @@
+// 
+
+
 import 'dart:io';
 import 'package:dentify/controller/crowns_fn.dart';
 import 'package:dentify/model/crowns_db/crowns_db.dart';
 import 'package:dentify/utilities/colors/colors.dart';
 import 'package:dentify/utilities/custom_widgets/alert_box.dart';
+import 'package:dentify/view/Crowns/image_fullscreen.dart';
 import 'package:flutter/material.dart';
+
 
 class DetailPage extends StatefulWidget {
   final CrownsDb data;
@@ -16,6 +21,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   final CrownsDetails crownsDetails = CrownsDetails();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,14 +70,25 @@ class _DetailPageState extends State<DetailPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              height: 200,
-              width: 200,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.file(
-                  File(widget.data.image),
-                  fit: BoxFit.cover,
+            GestureDetector(
+              onTap: () {
+                // Navigate to the ImageFullScreenPage
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ImageFullScreenPage(imagePath: widget.data.image),
+                  ),
+                );
+              },
+              child: Container(
+                height: 200,
+                width: 200,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.file(
+                    File(widget.data.image),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

@@ -364,7 +364,7 @@ class _MainFormState extends State<MainForm> {
                           chief: _chief.text,
                         ));
                         const snackbar = SnackBar(
-                          content: Text('Added to appointments'),
+                          content: Text('Added to Case History'),
                           duration: Duration(seconds: 5),
                           backgroundColor: Colors.green,
                         );
