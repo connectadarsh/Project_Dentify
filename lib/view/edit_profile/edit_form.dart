@@ -2,7 +2,6 @@ import 'package:dentify/controller/profile_fn.dart';
 import 'package:dentify/model/add_account_db/add_account_db.dart';
 import 'package:dentify/utilities/custom_widgets/Text_field.dart';
 import 'package:dentify/utilities/custom_widgets/button.dart';
-import 'package:dentify/view/Homepage/ControlBottom.dart';
 import 'package:flutter/material.dart';
 
 class EditForm extends StatefulWidget {
@@ -100,7 +99,7 @@ class _EditFormState extends State<EditForm> {
                     ));
 
                 const snackbar = SnackBar(
-                  content: Text('Successfully Signed in'),
+                  content: Text('saved changes'),
                   duration: Duration(seconds: 2),
                   backgroundColor: Colors.green,
                 );

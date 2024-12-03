@@ -7,8 +7,8 @@ import 'package:hive/hive.dart';
 
 class DeleteBox {
   Future<void> deleteAll() async {
-    // final profileData = Hive.box<ProfileDb>('profileBox');
-    // await profileData.clear();
+    final profileData = Hive.box<ProfileDb>('profileBox');
+    await profileData.clear();
     final signupDetails = Hive.box<UserpassDb>('userpassBox');
     await signupDetails.clear();
      final crownsData = Hive.box<CrownsDb>('CrownsBox');

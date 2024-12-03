@@ -6,8 +6,8 @@ import 'package:dentify/view/Homepage/ControlBottom.dart';
 import 'package:flutter/material.dart';
 
 class Completeform extends StatefulWidget {
- final String? selectedImage;
-   const Completeform({super.key,required this.selectedImage});
+  final String? selectedImage;
+  const Completeform({super.key, required this.selectedImage});
 
   @override
   State<Completeform> createState() => _CompleteformState();
@@ -24,7 +24,6 @@ class _CompleteformState extends State<Completeform> {
   final TextEditingController _mobilenumberController = TextEditingController();
   final TextEditingController _clinicnameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +33,12 @@ class _CompleteformState extends State<Completeform> {
         children: [
           CustomTextfield(
               controller: _yournameController,
-
               labelText: 'Your name',
               borderRadius: 10,
               hintText: 'Enter your name'),
           const SizedBox(height: 25),
           CustomTextfield(
               controller: _qualificationController,
-
               labelText: 'Qualification',
               borderRadius: 10,
               hintText: 'Enter your qualification'),
@@ -53,37 +50,36 @@ class _CompleteformState extends State<Completeform> {
               hintText: 'Enter your stream'),
           const SizedBox(height: 15),
           CustomTextfield(
-              controller: _regestrationController,
-
-              labelText: 'Registration',
-              borderRadius: 10,
-              hintText: 'Enter your registeration number',
-              keyboardtype: TextInputType.numberWithOptions(),
-              ),
-
+            controller: _regestrationController,
+            labelText: 'Registration',
+            borderRadius: 10,
+            hintText: 'Enter your registeration number',
+            keyboardtype: TextInputType.numberWithOptions(),
+          ),
           const SizedBox(height: 15),
           CustomTextfield(
-              labelText: 'Mobile number',
-              borderRadius: 10,
-              hintText: 'Enter your mobile number',
-              controller: _mobilenumberController,
-               keyboardtype: TextInputType.numberWithOptions(),
-               maxlength: 10,
-              ),
+            labelText: 'Mobile number',
+            borderRadius: 10,
+            hintText: 'Enter your mobile number',
+            controller: _mobilenumberController,
+            keyboardtype: TextInputType.numberWithOptions(),
+            maxlength: 10,
+          ),
           const SizedBox(height: 15),
           CustomTextfield(
-              labelText: 'Clinic name',
-              borderRadius: 10,
-              hintText: 'Enter your clinic name',
-              controller: _clinicnameController,
-              ),
+            labelText: 'Clinic name',
+            borderRadius: 10,
+            hintText: 'Enter your clinic name',
+            controller: _clinicnameController,
+          ),
           const SizedBox(
             height: 20,
           ),
           CoustomButton(
             onTap: () async {
-              if ((formKey.currentState!.validate())&&(widget.selectedImage!=null&&widget.selectedImage!.isNotEmpty)) {
-                
+              if ((formKey.currentState!.validate()) &&
+                  (widget.selectedImage != null &&
+                      widget.selectedImage!.isNotEmpty)) {
                 _profileDetails.addProfileDetails(ProfileDb(
                     username: _yournameController.text,
                     qualification: _qualificationController.text,
@@ -91,26 +87,26 @@ class _CompleteformState extends State<Completeform> {
                     mobilenumber: _mobilenumberController.text,
                     specialization: _specializationController.text,
                     clinicname: _clinicnameController.text,
-                    image: widget.selectedImage
-                    ));
+                    image: widget.selectedImage));
 
-
-                          const snackbar=SnackBar(content: Text('Successfully Signed in'),
-                    duration: Duration(seconds: 2),
-                    backgroundColor: Colors.green,
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                      Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => const ControlBottom(),)
-                
+                const snackbar = SnackBar(
+                  content: Text('Successfully Signed in'),
+                  duration: Duration(seconds: 2),
+                  backgroundColor: Colors.green,
                 );
-              }else{
-               const snackbar = SnackBar(
-                          content: Text('Add all required fields'),
-                          duration: Duration(seconds: 5),
-                          backgroundColor: Colors.red,
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ControlBottom(),
+                    ));
+              } else {
+                const snackbar = SnackBar(
+                  content: Text('Add all required fields'),
+                  duration: Duration(seconds: 5),
+                  backgroundColor: Colors.red,
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackbar);
               }
             },
             text: 'Submit',

@@ -1,11 +1,7 @@
 import 'package:dentify/model/add_account_db/add_account_db.dart';
 import 'package:dentify/utilities/colors/colors.dart';
-import 'package:dentify/view/Appointment/mainappointment.dart';
-import 'package:dentify/view/Form/main_form.dart';
-import 'package:dentify/view/Homepage/BottomNavigation.dart';
 import 'package:dentify/view/Homepage/carousal.dart';
 import 'package:dentify/view/Homepage/healthManager.dart';
-import 'package:dentify/view/profile/profileAvatar.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

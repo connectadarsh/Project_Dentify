@@ -71,6 +71,7 @@ class _SignupState extends State<Signup> {
                   CoustomButton(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
+                        if(_passwordController.text==_confirmpasswordConroller.text){
                         _signupCrud.addSignupData(UserpassDb(
                             username: _usernameController.text,
                             password: _passwordController.text));
@@ -85,6 +86,14 @@ class _SignupState extends State<Signup> {
                             MaterialPageRoute(
                               builder: (context) => const Login(),
                             ));
+                      }else{
+                           const snackbar = SnackBar(
+                          content: Text('Password do not match'),
+                          duration: Duration(seconds: 5),
+                          backgroundColor: Colors.red,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                      }
                       }
                     },
                     text: 'Signup',

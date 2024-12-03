@@ -1,5 +1,4 @@
 import 'package:dentify/view/Homepage/ControlBottom.dart';
-import 'package:dentify/view/Homepage/main_home.dart';
 import 'package:dentify/view/Login/login.dart';
 import 'package:dentify/view/selection/selection.dart';
 import 'package:flutter/material.dart';

@@ -9,7 +9,6 @@ class LoginFn {
     required String passWord,
   })async{
     final signupDetails=Hive.box<UserpassDb>('userpassBox');
-
     for(var entry in signupDetails.values){
       if(entry.username==userName&&entry.password==passWord){
          final sharedPrefs= await SharedPreferences.getInstance();

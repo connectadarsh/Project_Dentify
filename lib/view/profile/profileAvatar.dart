@@ -159,7 +159,7 @@ class _ProifleAvatarState extends State<ProifleAvatar> {
                      return  CustomAlertBox(
                       decision1: 'Logout',
                       decision2: 'Cancel',
-                      title: 'Are you want to logout',
+                      title: 'Are you sure you want to delete',
                       onPressed: ()async{
            final sharedPrefs = await SharedPreferences.getInstance();
                     await sharedPrefs.setBool(saveKeyLogIn, false);

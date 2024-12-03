@@ -1,10 +1,7 @@
-
 import 'package:dentify/utilities/colors/colors.dart';
 import 'package:dentify/view/Appointment/mainappointment.dart';
 import 'package:dentify/view/Form/main_form.dart';
 import 'package:dentify/view/Homepage/BottomNavigation.dart';
-import 'package:dentify/view/Homepage/carousal.dart';
-import 'package:dentify/view/Homepage/healthManager.dart';
 import 'package:dentify/view/Homepage/main_home.dart';
 import 'package:dentify/view/profile/profileAvatar.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +14,10 @@ class ControlBottom extends StatefulWidget {
 }
 
 class _ControlBottomState extends State<ControlBottom> {
-  // List of pages for navigation
-  int _currentIndex = 0;  // This tracks the currently selected page
+  int _currentIndex = 0;  
 
-  // List of pages to display
   final List<Widget> pages = [
-    const Mainhome(),   // Separate screen for home content
+    const Mainhome(),   
     const MainForm(leadIcon: false),
     const MainAppointment(leadIcon: false,),
     const ProifleAvatar(),

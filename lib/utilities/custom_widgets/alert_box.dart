@@ -15,7 +15,9 @@ class CustomAlertBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  AlertDialog(
-      title: Text(title!),
+      title: Text(title!,style: TextStyle(
+        fontSize: 18
+      ),),
           actions: [
 TextButton(onPressed: onPressed, child:  Text(decision1!),),
 TextButton(onPressed: (){  

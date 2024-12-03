@@ -73,17 +73,21 @@ class _LoginState extends State<Login> {
                           final userProfile =
                               sharedPrefs.getBool(saveKeyProfile);
                           if (userProfile == null || userProfile == false) {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CompleteProfile(),
-                                ));
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CompleteProfile(),
+                              ),
+                              (route) => false,
+                            );
                           } else {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ControlBottom(),
-                                ));
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ControlBottom(),
+                              ),
+                              (route) => false,
+                            );
                           }
                         } else {
                           const snackbar = SnackBar(
