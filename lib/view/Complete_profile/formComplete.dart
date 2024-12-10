@@ -95,11 +95,13 @@ class _CompleteformState extends State<Completeform> {
                   backgroundColor: Colors.green,
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ControlBottom(),
-                    ));
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ControlBottom(),
+                  ),
+                  (route) => false,
+                );
               } else {
                 const snackbar = SnackBar(
                   content: Text('Add all required fields'),
